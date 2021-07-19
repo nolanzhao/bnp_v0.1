@@ -1,0 +1,1 @@
+from .algo_05 import main as search_target  # noqa

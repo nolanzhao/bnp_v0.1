@@ -1,0 +1,26 @@
+#!/usr/local/bin/python3
+
+"""
+给alpha_stock软件提供token
+"""
+
+from bnp.settings import cfg
+from pymongo import MongoClient
+from bson import ObjectId
+
+URI = f"mongodb://{cfg.MONGO.USERNAME}:{cfg.MONGO.PASSWORD}@{cfg.MONGO.HOST}:{cfg.MONGO.PORT}/{cfg.MONGO.DB}?authMechanism=SCRAM-SHA-1"  # noqa
+client = MongoClient(URI)
+db = client[cfg.MONGO.DB]
+
+n = input(">> 输入有效期(天数, -1永久有效): ")
+if not n.isdigit():
+    print('格式有误, 请输入整数！')
+
+cursor = db.account.insert_one({'validity': int(n)})
+
+print(cursor.inserted_id)
+
+a = db.account.find_one({'_id': ObjectId(cursor.inserted_id)})
+print(a)
+
+print('success!')

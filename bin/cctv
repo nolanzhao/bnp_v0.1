@@ -1,0 +1,15 @@
+#!/usr/local/bin/python3
+"""
+获取新闻联播文本数据，供分析使用
+"""
+
+import tushare as ts
+from bnp.settings import cfg
+
+ts.set_token(cfg.BASE.TUSHARE_TOKEN)
+pro = ts.pro_api()
+
+
+df = pro.cctv_news(date='20181211')
+
+print(df)

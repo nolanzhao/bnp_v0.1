@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# add by zhaoxu
+*code-workspace
+.idea/*
+.vscode/*
+# demo/*
