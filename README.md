@@ -12,7 +12,7 @@ Schrödinger’s Bank Note Printer
 ## 安装指南
 #### 0. 完善config配置
 
-#### 1. 
+#### 1. 安装Python依赖库
 ```bash
 pip install -r requirements.txt
 ```
